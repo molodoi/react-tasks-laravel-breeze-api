@@ -1,18 +1,33 @@
 import { useEffect, useState } from "react";
-import axios from "../api/axios";
+
+import { useQuery, useQueryClient } from "@tanstack/react-query";
+
 import useAuthContext from "../context/AuthContext";
+
+import { getTasks } from "../api/task";
+import Loader from "../components/Loader";
+
 const Home = () => {
     const { user } = useAuthContext();
-    const [tasks, setTasks] = useState([]);
+    const queryClient = useQueryClient();
 
-    const getTasks = async () => {
-        const { data } = await axios.get("/api/v1/tasks");
-        setTasks(data);
-    };
+    const {
+        data: tasks,
+        isLoading,
+        error,
+        isError,
+    } = useQuery({
+        queryKey: ["tasks"],
+        queryFn: getTasks,
+    });
 
-    useEffect(() => {
-        getTasks();
-    }, []);
+    if (isLoading) {
+        return <Loader />;
+    }
+
+    if (isError) {
+        return <div>Error! {error.message}</div>;
+    }
 
     return (
         <div className="container mx-auto mt-12">
@@ -43,7 +58,7 @@ const Home = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {tasks.data?.map((task) => (
+                                {tasks.map((task) => (
                                     <tr key={task.id}>
                                         <td className="px-4 py-3">
                                             {task.title}
