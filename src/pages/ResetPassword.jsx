@@ -38,7 +38,7 @@ const ResetPassword = () => {
         }
     };
     return (
-        <section className="bg-[#F4F7FF] py-20 lg:py-[120px]">
+        <section className="bg-slate-100  py-20 lg:py-[120px]">
             <div className="container mx-auto">
                 <div className="flex flex-wrap">
                     <div className="w-full px-4">
@@ -55,6 +55,7 @@ const ResetPassword = () => {
               text-center
               sm:px-12
               md:px-[60px]
+              border-solid border-1 border-gray-400 shadow-2xl
             "
                         >
                             {status && (
@@ -86,7 +87,7 @@ const ResetPassword = () => {
                                         }
                                         placeholder="Password"
                                         className="
-                    bordder-[#E9EDF4]
+                    border-[#E9EDF4]
                     w-full
                     rounded-md
                     border
@@ -119,7 +120,7 @@ const ResetPassword = () => {
                                         }
                                         placeholder="Password Confirmation"
                                         className="
-                    bordder-[#E9EDF4]
+                    border-[#E9EDF4]
                     w-full
                     rounded-md
                     border

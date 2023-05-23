@@ -15,7 +15,7 @@ const Register = () => {
     };
 
     return (
-        <section className="bg-[#F4F7FF] py-20 lg:py-[120px]">
+        <section className="bg-slate-100 py-20 lg:py-[120px]">
             <div className="container mx-auto">
                 <div className="flex flex-wrap">
                     <div className="w-full px-4">
@@ -32,6 +32,7 @@ const Register = () => {
               text-center
               sm:px-12
               md:px-[60px]
+              border-solid border-1 border-gray-400 shadow-2xl
             "
                         >
                             <div className="mb-10 text-center md:mb-16">
@@ -47,7 +48,7 @@ const Register = () => {
                                         }
                                         placeholder="Name"
                                         className="
-                    bordder-[#E9EDF4]
+                    border-[#E9EDF4]
                     w-full
                     rounded-md
                     border
@@ -78,7 +79,7 @@ const Register = () => {
                                         }
                                         placeholder="Email"
                                         className="
-                    bordder-[#E9EDF4]
+                    border-[#E9EDF4]
                     w-full
                     rounded-md
                     border
@@ -109,7 +110,7 @@ const Register = () => {
                                         }
                                         placeholder="Password"
                                         className="
-                    bordder-[#E9EDF4]
+                    border-[#E9EDF4]
                     w-full
                     rounded-md
                     border
@@ -142,7 +143,7 @@ const Register = () => {
                                         }
                                         placeholder="Password Confirmation"
                                         className="
-                    bordder-[#E9EDF4]
+                    border-[#E9EDF4]
                     w-full
                     rounded-md
                     border

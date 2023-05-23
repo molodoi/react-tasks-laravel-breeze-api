@@ -9,6 +9,8 @@ import ResetPassword from "./pages/ResetPassword";
 
 import AuthLayout from "./layouts/AuthLayout";
 import GuestLayout from "./layouts/GuestLayout";
+import TaskCreate from "./components/tasks/TaskCreate";
+import TaskEdit from "./components/tasks/TaskEdit";
 
 // Create a client
 const queryClient = new QueryClient();
@@ -20,6 +22,8 @@ function App() {
                 <Routes>
                     <Route element={<AuthLayout />}>
                         <Route path="/" element={<Home />} />
+                        <Route path="/tasks/create" element={<TaskCreate />} />
+                        <Route path="/tasks/:id/edit" element={<TaskEdit />} />
                     </Route>
                     <Route element={<GuestLayout />}>
                         <Route path="/login" element={<Login />} />
