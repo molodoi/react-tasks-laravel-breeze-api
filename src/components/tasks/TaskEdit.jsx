@@ -2,10 +2,9 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import useAuthContext from "../../context/AuthContext";
 import { useParams, useNavigate } from "react-router-dom";
-
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-
 import { ArrowLeftCircleIcon } from "@heroicons/react/24/outline";
+import { toast } from "react-toastify";
 import { getTask, updateTask } from "../../api/task";
 import Loader from "../Loader";
 
@@ -31,13 +30,16 @@ function TaskEdit() {
             // La mutation a réussi
             refetch();
             navigate("/");
+            toast.success("Task was updated !", {
+                position: toast.POSITION.BOTTOM_RIGHT,
+            });
         },
         onError: (error) => {
             // Une erreur s'est produite lors de la mutation
-            console.error(
-                "Une erreur s'est produite lors de la mise à jour de la tâche :",
-                error
-            );
+            console.error("Something went wrong !", error);
+            toast.error("Something went wrong ! !", {
+                position: toast.POSITION.BOTTOM_RIGHT,
+            });
         },
     });
 

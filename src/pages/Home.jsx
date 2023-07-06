@@ -8,7 +8,7 @@ import {
     CheckCircleIcon,
     ArrowPathIcon,
 } from "@heroicons/react/24/outline";
-
+import { toast } from "react-toastify";
 import useAuthContext from "../context/AuthContext";
 
 import { getTasks, deleteTask, updateStatusTask } from "../api/task";
@@ -40,17 +40,23 @@ const Home = () => {
         return <div>Error! {error.message}</div>;
     }
 
-    const deleteSkill = async (id) => {
+    const deleteT = async (id) => {
         if (!window.confirm("Are you sure")) {
             return;
         }
         await deleteTask(id);
+        toast.success("Task was deleted !", {
+            position: toast.POSITION.BOTTOM_RIGHT,
+        });
     };
 
     const updateStatus = async (event, id) => {
         event.preventDefault();
         await updateStatusTask(id);
         refetch();
+        toast.success("Task status was updated !", {
+            position: toast.POSITION.BOTTOM_RIGHT,
+        });
     };
 
     const lastPage = () => setPage(tasks.meta.last_page);
@@ -126,7 +132,7 @@ const Home = () => {
                                                 </Link>
                                                 <button
                                                     onClick={() =>
-                                                        deleteSkill(task.id)
+                                                        deleteT(task.id)
                                                     }
                                                     className="self-center px-4 py-2 text-white rounded-md"
                                                 >

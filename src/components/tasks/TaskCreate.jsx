@@ -5,7 +5,9 @@ import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 import { createTask } from "../../api/task";
 import { ArrowLeftCircleIcon } from "@heroicons/react/24/outline";
+import { toast } from "react-toastify";
 import Loader from "../Loader";
+
 function TaskCreate() {
     const { user } = useAuthContext();
     const navigate = useNavigate();
@@ -13,12 +15,18 @@ function TaskCreate() {
     const mutation = useMutation(createTask, {
         onSuccess: () => {
             navigate("/");
+            toast.success("Task was created !", {
+                position: toast.POSITION.BOTTOM_RIGHT,
+            });
         },
         onError: (error) => {
             if (error.message) {
                 const errorData = JSON.parse(error.message);
                 setErrors(errorData);
             }
+            toast.error("Something went wrong ! !", {
+                position: toast.POSITION.BOTTOM_RIGHT,
+            });
         },
     });
 
